@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "16.17.0"
+  },
   "scripts": {
+    "tsc":"tsc",
     "start": "node dist/server.js",
     "postinstall": "tsc && copyfiles -u 1 src/**/*.ejs dist/",
     "test": "echo \"Error: no test specified\" && exit 1",
