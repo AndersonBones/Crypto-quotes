@@ -1,4 +1,4 @@
-# Coins-quotes
+# Crypto-quotes
 Informa as cotações das principais criptomoedas da atualidade.
 
 ### Pré-requisitos globais:
