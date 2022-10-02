@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Coin Quotes</title>
+
+        <link rel="icon" type="image/png" href="/images/logo.png"/>
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="/assets/style.css">
+        
+    </head>
+
+    <body>
+
+        <div class="container">
+            <%- include('../partials/logo'); %>
+
+            <form class="input-group" action="/search" method="get">
+                <input id="search-focus" type="search" id="form1" name="q" autocomplete="off" class="form-control m-auto              bg-dark rounded-start text-light" />
+                <button type="submit" class="btn btn-primary bi bi-search"></button>
+            </form>
+
+            <div class="coins">
+                <table class="table table-hover table-dark mt-2 m-auto  ">
+                    <thead>
+                        <tr>
+                            <th scope="col"><i class="bi bi-star"></i></th>
+                            <th scope="col">Coin</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">24 h</th>
+                            <th scope="col">24h Volume</th>
+                            <th scope="col">Market Cap</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% coins.map(item =>{ %>
+                            <tr>
+                                
+                                <td><%= coins.indexOf(item)+1 %> </td>
+                                <td>
+                                    <img src="<%= item.image %>" width="30"> <span class="ms-1"><%= item.name %></span> 
+                                    <span class="ms-1 text-muted"><%=item.symbol.toUpperCase()%> </span></td>
+                                <td class="text-white"><%= Nformat(item.current_price, 'on') %></td>
+    
+                                <td class="<%= item.price_change_percentage_24h < 0 ? 'text-danger' : 'text-success' %>">
+                                    <%= Nformat(item.price_change_percentage_24h, 'off')+"%" %> 
+                                </td> 
+                                
+                                <td><%= Nformat(item.total_volume, 'on') %> </td>
+    
+                                <td><%=Nformat(item.market_cap, 'on')%></td>
+                            </tr>
+                        <%})%> 
+                        
+                    </tbody>
+                </table>
+            </div>
+            
+            
+        </div>
+
+        <%- include('../partials/footer'); %>
+
+        <script src="/assets/script.js" defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+            crossorigin="anonymous"></script>
+    </body>
+
+</html>
