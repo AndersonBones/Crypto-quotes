@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node dist/server.js",
+    "postinstall": "tsc && copyfiles -u 1 src/**/*.ejs dist/",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon -e ts,json,ejs src/server.ts"
+    "start-dev": "nodemon -e ts,json,ejs src/server.ts"
   },
   "repository": {
     "type": "git",
