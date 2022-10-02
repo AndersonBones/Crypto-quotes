@@ -24,4 +24,4 @@ app.use((req: Request, res: Response)=>{
     res.status(404).render('pages/404')
 })
 
-app.listen(process.env.PORT);
+app.listen(process.env.PORT || 3000);
